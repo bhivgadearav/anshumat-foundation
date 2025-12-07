@@ -425,3 +425,55 @@ src/
 - **PERCENT:** Percentage discount (e.g., 20% off) with optional maxDiscountAmount cap
 
 ---
+
+## AI Usage
+
+### Model Used - Deepseek
+
+### Prompt (With Assignment Doc Attached)
+```
+Goal: Build a minimal Express.js backend written in TypeScript that uses an in-memory data store. Follow the attached document’s guidelines strictly.
+
+Tech stack (required) :-
+a. Language: TypeScript
+b. Framework: Express.js
+c. Database: In-memory (no external DB or file persistence)
+
+Non-functional constraints :-
+a. Keep the code minimal — do not add features, libraries or tooling not mentioned above.
+b. Use industry standard patterns for organization (clear separation of concerns) but implement them simply.
+c. Route naming must be simple & straightforward (see examples below).
+d. Strictly obey the attached document — treat it as authoritative for any ambiguous behavior.
+
+Required architecture & patterns (keep simple)
+A. Folder structure (suggested) :-
+src/
+  index.ts               // app bootstrap
+  server.ts              // express app and middleware
+  routes/
+    v1/
+      items.routes.ts
+  controllers/
+    items.controller.ts
+  services/
+    items.service.ts
+  repositories/
+    items.repository.ts  // in-memory Map-based store
+  models/
+    item.model.ts        // TypeScript interfaces/types
+  middlewares/
+    error.middleware.ts
+    notfound.middleware.ts
+    
+B. Layers :-
+a. Controller - Parse request, call service, send response.
+b. Service: Business logic, validation (simple), calls repository.
+c. Repository: In-memory store using Map<string, T> or an array. Encapsulate CRUD operations here.
+d. Models: TypeScript interfaces/types and DTO shapes.
+e. Middlewares: Centralized error handling and 404.
+
+C. In-memory DB requirements :-
+a. Use a Map keyed by id (string) or equivalent.
+b. Support basic CRUD: create, read (one + list), update, delete.
+c. Keep createdAt / updatedAt timestamps (optional but recommended).
+```
